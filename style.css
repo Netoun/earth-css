@@ -1,0 +1,188 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rotating {
+  0% {
+    border-top-left-radius: 52%;
+    border-top-right-radius: 52%;
+    border-bottom-left-radius: 52%;
+    border-bottom-right-radius: 52%;
+  }
+  25% {
+    border-top-left-radius: 49%;
+    border-top-right-radius: 48%;
+    border-bottom-left-radius: 53%;
+    border-bottom-right-radius: 50%;
+  }
+  50% {
+    border-top-left-radius: 53%;
+    border-top-right-radius: 48%;
+    border-bottom-left-radius: 53%;
+    border-bottom-right-radius: 47%;
+  }
+  75% {
+    border-top-left-radius: 49%;
+    border-top-right-radius: 48%;
+    border-bottom-left-radius: 53%;
+    border-bottom-right-radius: 47%;
+  }
+  100% {
+    border-top-left-radius: 52%;
+    border-top-right-radius: 52%;
+    border-bottom-left-radius: 52%;
+    border-bottom-right-radius: 52%;
+  }
+}
+
+
+@keyframes translating-one {
+  0% {
+      transform: rotateZ(0) translateX(140px) rotateZ(0) rotateY(-80deg);
+  }
+  100% {
+      transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateY(-80deg);
+  }
+}
+
+@keyframes translating-two {
+  0%  { transform: rotate(0deg) translateX(0px) translateY(5px) scale(1); }
+  25%  { transform: rotate(90deg) translateX(0px) translateY(5px) scale(.95); }
+  50%  { transform: rotate(180deg) translateX(0px) translateY(5px)  scale(.90); }
+  75%  { transform: rotate(270deg) translateX(0px) translateY(5px)  scale(.95); }
+  100%  { transform: rotate(360deg) translateX(0px) translateY(5px)  scale(1); }
+}
+
+@keyframes translating-three {
+  0% {
+      transform: rotateZ(0) translateX(140px) rotateZ(0) rotateY(0deg);
+  }
+  100% {
+      transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateY(360deg);
+  }
+}
+
+@keyframes translating-four {
+  0%  { transform: rotate(-0deg) translateX(0px) translateY(5px) scale(1); }
+  25%  { transform: rotate(-90deg) translateX(0px) translateY(5px) scale(.95); }
+  50%  { transform: rotate(-180deg) translateX(0px) translateY(5px)  scale(.90); }
+  75%  { transform: rotate(-270deg) translateX(0px) translateY(5px)  scale(.95); }
+  100%  { transform: rotate(-360deg) translateX(0px) translateY(5px)  scale(1); }
+}
+
+@keyframes rotate-continent {
+  from  { transform: rotateX(0deg) }
+  to { transform: rotateX(360deg) }
+}
+
+
+.universe {
+  width: inherit;
+  height: inherit;
+  background: #0f193b;
+}
+
+.earth-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+
+.ozone-layer {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: radial-gradient(circle, #ffffff 0%, #0f193b 70%);
+}
+
+.earth {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 48%;
+  border-top-right-radius: 48%;
+  border-bottom-left-radius: 48%;
+  border-bottom-right-radius: 48%;
+  background: #27a9e1;
+  overflow: hidden;
+  animation : rotating 3s linear infinite;
+}
+
+.earth:after {
+  position: absolute;
+  content: '';
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 48%;
+  border-top-right-radius: 48%;
+  border-bottom-left-radius: 48%;
+  border-bottom-right-radius: 48%;
+  animation : rotating 3s linear infinite;
+  box-shadow: -80px 15px 80px 10px rgba(0,0,0,.4) inset;
+}
+
+.earth:before {
+  position: absolute;
+  content: '';
+  width: 300px;
+  height: 300px;
+  opacity: .2;
+  border-radius: 50%;
+  background: radial-gradient(circle at 100px 100px, #fff, #000);
+  animation : rotating 3s linear infinite;
+}
+
+.continent {
+  width: 100px;
+  height: 100px;
+  border-radius: 1em;
+  transform-style: preserve-3d;
+
+}
+
+.continent-one {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background: lawngreen;
+  animation : translating-one 10s linear infinite;
+  clip-path: polygon(50% 0%, 68.36% 29.36%, 100% 35.36%, 100% 70.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+}
+
+.continent-two {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: white;
+  animation : translating-two 20s linear infinite;
+  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+}
+
+.continent-three {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background: lawngreen;
+  animation : translating-three 10s linear infinite;
+  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+}
+
+.continent-four {
+  position: absolute;
+  bottom: 0px;
+  right: -20px;
+  background: white;
+  animation : translating-four 20s linear infinite;
+
+  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+}
