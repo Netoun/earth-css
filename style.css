@@ -28,7 +28,7 @@ body {
     border-top-left-radius: 49%;
     border-top-right-radius: 48%;
     border-bottom-left-radius: 53%;
-    border-bottom-right-radius: 47%;
+    border-bottom-right-radius: 50%;
   }
   100% {
     border-top-left-radius: 52%;
@@ -37,47 +37,6 @@ body {
     border-bottom-right-radius: 52%;
   }
 }
-
-
-@keyframes translating-one {
-  0% {
-      transform: rotateZ(0) translateX(140px) rotateZ(0) rotateY(-80deg);
-  }
-  100% {
-      transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateY(-80deg);
-  }
-}
-
-@keyframes translating-two {
-  0%  { transform: rotate(0deg) translateX(0px) translateY(5px) scale(1); }
-  25%  { transform: rotate(90deg) translateX(0px) translateY(5px) scale(.95); }
-  50%  { transform: rotate(180deg) translateX(0px) translateY(5px)  scale(.90); }
-  75%  { transform: rotate(270deg) translateX(0px) translateY(5px)  scale(.95); }
-  100%  { transform: rotate(360deg) translateX(0px) translateY(5px)  scale(1); }
-}
-
-@keyframes translating-three {
-  0% {
-      transform: rotateZ(0) translateX(140px) rotateZ(0) rotateY(0deg);
-  }
-  100% {
-      transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateY(360deg);
-  }
-}
-
-@keyframes translating-four {
-  0%  { transform: rotate(-0deg) translateX(0px) translateY(5px) scale(1); }
-  25%  { transform: rotate(-90deg) translateX(0px) translateY(5px) scale(.95); }
-  50%  { transform: rotate(-180deg) translateX(0px) translateY(5px)  scale(.90); }
-  75%  { transform: rotate(-270deg) translateX(0px) translateY(5px)  scale(.95); }
-  100%  { transform: rotate(-360deg) translateX(0px) translateY(5px)  scale(1); }
-}
-
-@keyframes rotate-continent {
-  from  { transform: rotateX(0deg) }
-  to { transform: rotateX(360deg) }
-}
-
 
 .universe {
   width: inherit;
@@ -89,7 +48,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(30deg);
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
 }
 
 .ozone-layer {
@@ -113,31 +73,41 @@ body {
   border-bottom-right-radius: 48%;
   background: #27a9e1;
   overflow: hidden;
-  animation : rotating 3s linear infinite;
+  transform-style: preserve-3d;
+  animation: rotating 3s linear infinite;
 }
 
 .earth:after {
   position: absolute;
-  content: '';
+  content: "";
   width: 300px;
   height: 300px;
   border-top-left-radius: 48%;
   border-top-right-radius: 48%;
   border-bottom-left-radius: 48%;
   border-bottom-right-radius: 48%;
-  animation : rotating 3s linear infinite;
-  box-shadow: -80px 15px 80px 10px rgba(0,0,0,.4) inset;
+  box-shadow: -80px 15px 80px 10px rgba(0, 0, 0, 0.4) inset;
+  animation: rotating 3s linear infinite;
 }
 
 .earth:before {
   position: absolute;
-  content: '';
+  content: "";
   width: 300px;
   height: 300px;
-  opacity: .2;
+  opacity: 0.2;
   border-radius: 50%;
   background: radial-gradient(circle at 100px 100px, #fff, #000);
-  animation : rotating 3s linear infinite;
+  animation: rotating 3s linear infinite;
+}
+
+.continent-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
 .continent {
@@ -145,44 +115,165 @@ body {
   height: 100px;
   border-radius: 1em;
   transform-style: preserve-3d;
-
+  position: absolute;
 }
 
-.continent-one {
+.continent:first-child {
+  top: -45px;
+  left: 45px;
+  background: white;
+  animation: rotating-continent-artic 20s infinite linear;
+  border-top-left-radius: 28%;
+  border-top-right-radius: 48%;
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 75%;
+}
+
+.continent:nth-child(2) {
   width: 150px;
   height: 150px;
-  position: absolute;
-  top: 10px;
+  top: 80px;
   left: 0;
   background: lawngreen;
-  animation : translating-one 10s linear infinite;
-  clip-path: polygon(50% 0%, 68.36% 29.36%, 100% 35.36%, 100% 70.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+  animation: rotating-continent-2 20s infinite linear;
+  border-top-left-radius: 28%;
+  border-top-right-radius: 48%;
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 75%;
 }
 
-.continent-two {
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background: white;
-  animation : translating-two 20s linear infinite;
-  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
-}
-
-.continent-three {
-  position: absolute;
+.continent:nth-child(3) {
   top: 10px;
-  left: 0;
+  right: 0;
+  animation: rotating-continent-3 20s infinite linear;
   background: lawngreen;
-  animation : translating-three 10s linear infinite;
-  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+  border-top-left-radius: 75%;
+  border-top-right-radius: 26%;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 45%;
 }
 
-.continent-four {
-  position: absolute;
-  bottom: 0px;
-  right: -20px;
-  background: white;
-  animation : translating-four 20s linear infinite;
+.continent:nth-child(4) {
+  top: 0;
+  left: 0;
+  animation: rotating-continent-4 20s infinite linear;
+  background: lawngreen;
+  border-top-left-radius: 75%;
+  border-top-right-radius: 26%;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 45%;
+}
 
-  clip-path: polygon(50% 0%, 48.36% 29.36%, 100% 25.36%, 40% 30.36%, 58.36% 72.36%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 23% 17%);
+.continent:nth-child(5) {
+  top: 10px;
+  right: 0;
+  animation: rotating-continent-5 20s infinite linear;
+  background: lawngreen;
+  border-top-left-radius: 75%;
+  border-top-right-radius: 26%;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 45%;
+}
+
+.continent:last-child {
+  bottom: -45px;
+  right: 45px;
+  background: white;
+  animation: rotating-continent-antartic 20s infinite linear;
+}
+
+@keyframes rotating-continent-artic {
+  from {
+    transform: rotateZ(0deg) rotateX(20deg) rotateY(360deg);
+  }
+  to {
+    transform: rotateZ(360deg) rotateX(20deg) rotateY(360deg);
+  }
+}
+
+@keyframes rotating-continent-2 {
+  0% {
+    transform: translate3d(300px, -150px, 0) rotate(-40deg);
+  }
+  25% {
+    transform: translate3d(150px, -25px, 0) rotate(-20deg);
+  }
+  50% {
+    transform: translate3d(0, -0, 0) rotate(0);
+  }
+  75% {
+    transform: translate3d(-150px, -25px, 0) rotate(25deg);
+  }
+  100% {
+    transform: translate3d(-300px, 50px, 0) rotate(25deg);
+  }
+}
+
+@keyframes rotating-continent-3 {
+  0% {
+    transform: translate3d(300px, 0px, 0) rotate(-60deg);
+  }
+  25% {
+    transform: translate3d(150px, 25px, 0) rotate(-40deg);
+  }
+  50% {
+    transform: translate3d(0, 75px, 0) rotate(-20deg);
+  }
+  75% {
+    transform: translate3d(-150px, 120px, 0) rotate(25deg);
+  }
+  100% {
+    transform: translate3d(-300px, 75px, 0) rotate(25deg);
+  }
+}
+
+@keyframes rotating-continent-4 {
+  0% {
+    transform: translate3d(0, 100px, 0) rotate(-40deg);
+  }
+  25% {
+    transform: translate3d(-75px, 75px, 0) rotate(-20deg);
+  }
+  50% {
+    transform: translate3d(-150px, 90px, 0) rotate(0);
+  }
+  60% {
+    transform: translate3d(-200px, -200px, 0) rotate(0);
+  }
+  70% {
+    transform: translate3d(300px, -200px, 0) rotate(0);
+  }
+  75% {
+    transform: translate3d(200px, 75px, 0) rotate(25deg);
+  }
+  100% {
+    transform: translate3d(0, 100px, 0) rotate(-40deg);
+  }
+}
+
+@keyframes rotating-continent-5 {
+  0% {
+    transform: translate3d(300px, 0px, 0) rotate(-60deg);
+  }
+  25% {
+    transform: translate3d(150px, 25px, 0) rotate(-40deg);
+  }
+  50% {
+    transform: translate3d(0, 75px, 0) rotate(-20deg);
+  }
+  75% {
+    transform: translate3d(-150px, 120px, 0) rotate(25deg);
+  }
+  100% {
+    transform: translate3d(-300px, 75px, 0) rotate(25deg);
+  }
+}
+
+@keyframes rotating-continent-antartic {
+  from {
+    transform: rotateZ(0deg) rotateX(20deg) rotateY(360deg);
+  }
+  to {
+    transform: rotateZ(-360deg) rotateX(20deg) rotateY(360deg);
+  }
 }
