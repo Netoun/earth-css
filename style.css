@@ -64,7 +64,6 @@ body {
   background: radial-gradient(circle, #e9c93a 0%, #caae0fa8 70%);
 }
 
-
 .earth-wrapper {
   position: absolute;
   top: 50%;
@@ -75,13 +74,13 @@ body {
 
 .ozone-layer {
   position: absolute;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background: radial-gradient(circle, #ffffff 0%, #0f193b 70%);
+  box-shadow: 0px 0px 50px 0px rgba(255, 255, 255, 0.4);
 }
 
 .earth {
@@ -106,7 +105,7 @@ body {
   border-top-right-radius: 48%;
   border-bottom-left-radius: 48%;
   border-bottom-right-radius: 48%;
-  box-shadow: -80px 15px 80px 10px rgba(0, 0, 0, 0.4) inset;
+  box-shadow: -80px 15px 50px 10px rgba(0, 0, 0, 0.4) inset;
 }
 
 .earth:before {
@@ -116,7 +115,11 @@ body {
   height: 300px;
   opacity: 0.2;
   border-radius: 50%;
-  background: radial-gradient(circle at 100px 100px, #fff, rgba(0, 0, 0, 0.514));
+  background: radial-gradient(
+    circle at 100px 100px,
+    #fff,
+    rgba(0, 0, 0, 0.514)
+  );
 }
 
 .continent-wrapper {
@@ -136,12 +139,14 @@ body {
   height: 50%;
   overflow: auto;
   margin: auto;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   transform-origin: center;
   position: absolute;
   will-change: transform, rotate;
   box-shadow: -10px 10px 80px 10px rgba(0, 0, 0, 0.2) inset;
-
 }
 
 .continent:first-child {
@@ -185,7 +190,6 @@ body {
   border-bottom-right-radius: 75%;
 }
 
-
 .continent:nth-child(2)::after {
   position: absolute;
   top: 10px;
@@ -224,7 +228,6 @@ body {
   border-bottom-right-radius: 75%;
 }
 
-
 .continent:nth-child(5) {
   width: 120px;
   height: 150px;
@@ -260,7 +263,6 @@ body {
   border-bottom-left-radius: 33%;
   border-bottom-right-radius: 75%;
 }
-
 
 @keyframes rotate-wrapper {
   from {
