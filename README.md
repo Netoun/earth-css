@@ -1,2 +1,3 @@
-# earth-css
-# earth-css
+# Earth pure css
+
+Just to counter boredom
